@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import paginate from "./untils";
 
-const url = "https://api.github.com/users/finn-01/followers";
+const url = "https://api.github.com/users/finn-01/followers?per_page=100";
 
-const useFetch = () => {
+export const useFetch = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
 
@@ -14,7 +14,7 @@ const useFetch = () => {
 
 		console.log(data);
 
-		setData(data);
+		setData(paginate(data));
 		setLoading(false);
 	};
 
@@ -24,5 +24,3 @@ const useFetch = () => {
 
 	return { loading, data };
 };
-
-export default useFetch;
